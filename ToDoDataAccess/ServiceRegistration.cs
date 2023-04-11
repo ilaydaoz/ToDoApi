@@ -21,8 +21,8 @@ namespace ToDoDataAccess
             });
             services.TryAddScoped<DbContext, EfContext>();
             services.AddScoped<IToDoRepository, ToDoRepository>();
-           // services.AddScoped<ICategoryRepository, CategoryRepository>();
-           // services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
         }
     }
 }

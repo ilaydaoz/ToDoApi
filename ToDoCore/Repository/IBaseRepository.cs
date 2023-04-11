@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using ToDoCore.Entites;
@@ -15,5 +16,6 @@ namespace ToDoCore.Repository
         Task<T> InsertAsync(T entity);
         bool Delete(T entity);
         Task<int> SaveAsync();
+        ICollection<T> GetByFilter(Expression<Func<T, bool>> filter);
     }
 }

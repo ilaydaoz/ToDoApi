@@ -21,7 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ToDoEntity\ToDoEntity.csproj" />
+    <ProjectReference Include="..\ToDoBusiness\ToDoBusiness.csproj" />
+    <ProjectReference Include="..\ToDoCore\ToDoCore.csproj" />
   </ItemGroup>
 
 </Project>

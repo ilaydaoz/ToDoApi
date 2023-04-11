@@ -3,15 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32414.318
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApi", "ToDoApi\ToDoApi.csproj", "{C9E9EE9F-0498-4553-A741-6568643C5430}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoApi", "ToDoApi\ToDoApi.csproj", "{C9E9EE9F-0498-4553-A741-6568643C5430}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoBusiness", "ToDoBusiness\ToDoBusiness.csproj", "{46C15499-2FA1-40A2-A71E-50D8F984C32C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoBusiness", "ToDoBusiness\ToDoBusiness.csproj", "{46C15499-2FA1-40A2-A71E-50D8F984C32C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoCore", "ToDoCore\ToDoCore.csproj", "{80BC9764-5AD9-4454-A366-61CA5BA2DFC7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoCore", "ToDoCore\ToDoCore.csproj", "{80BC9764-5AD9-4454-A366-61CA5BA2DFC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoDataAccess", "ToDoDataAccess\ToDoDataAccess.csproj", "{5F109DFB-93DC-47BD-8F19-A0BA98096E54}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoEntity", "ToDoEntity\ToDoEntity.csproj", "{A0CACB46-D542-48F4-882E-DD5375C59A49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoDataAccess", "ToDoDataAccess\ToDoDataAccess.csproj", "{5F109DFB-93DC-47BD-8F19-A0BA98096E54}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +33,6 @@ Global
 		{5F109DFB-93DC-47BD-8F19-A0BA98096E54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F109DFB-93DC-47BD-8F19-A0BA98096E54}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F109DFB-93DC-47BD-8F19-A0BA98096E54}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A0CACB46-D542-48F4-882E-DD5375C59A49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A0CACB46-D542-48F4-882E-DD5375C59A49}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A0CACB46-D542-48F4-882E-DD5375C59A49}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A0CACB46-D542-48F4-882E-DD5375C59A49}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

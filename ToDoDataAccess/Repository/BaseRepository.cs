@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 using ToDoCore.Entites;
 using ToDoCore.Repository;
 using ToDoDataAccess.Context;
 
-namespace ToDoDataAccess
+namespace ToDoDataAccess.Repository
 {
     public class BaseRepository<T, IContext> : IBaseRepository<T> where T : BaseEntity
     {
@@ -21,7 +22,7 @@ namespace ToDoDataAccess
 
         public Task<List<T>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return _context.Set<T>().ToListAsync();
         }
 
         public Task<T> GetByIdAsync(Guid Id)
@@ -43,6 +44,10 @@ namespace ToDoDataAccess
         {
             throw new NotImplementedException();
         }
-    }
 
+        public ICollection<T> GetByFilter(Expression<Func<T, bool>> filter)
+        {
+            return _context.Set<T>().Where(filter).ToList();
+        }
+    }
 }
