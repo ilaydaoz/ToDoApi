@@ -13,11 +13,12 @@ namespace ToDoDataAccess.Repository
         public BaseRepository(EfContext context)
         {
             _context = context;
-            DbSet = _context.Set<T>();
+           DbSet = _context.Set<T>();
         }
         public bool Delete(T entity)
         {
-            throw new NotImplementedException();
+            DbSet.Remove(entity);
+            return true;
         }
 
         public Task<List<T>> GetAllAsync()
@@ -27,22 +28,24 @@ namespace ToDoDataAccess.Repository
 
         public Task<T> GetByIdAsync(Guid Id)
         {
-            throw new NotImplementedException();
+            return _context.Set<T>().FirstOrDefaultAsync(x => x.Id == Id);
         }
 
-        public Task<T> InsertAsync(T entity)
+        public async Task<T> InsertAsync(T entity)
         {
-            throw new NotImplementedException();
+            DbSet.Add(entity);
+            return entity;
         }
 
-        public Task<int> SaveAsync()
+        public async Task<int> SaveAsync()
         {
-            throw new NotImplementedException();
+            return await _context.SaveChangesAsync();
         }
 
-        public Task<Guid> UpdateAsync(T entity)
+        public async Task<Guid> UpdateAsync(T entity)
         {
-            throw new NotImplementedException();
+            _context.Entry(entity).State = EntityState.Modified;
+            return entity.Id;
         }
 
         public ICollection<T> GetByFilter(Expression<Func<T, bool>> filter)

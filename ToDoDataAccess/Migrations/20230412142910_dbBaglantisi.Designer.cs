@@ -12,15 +12,15 @@ using ToDoDataAccess.Context;
 namespace ToDoDataAccess.Migrations
 {
     [DbContext(typeof(EfContext))]
-    [Migration("20230411140411_dbBaglantısı")]
-    partial class dbBaglantısı
+    [Migration("20230412142910_dbBaglantisi")]
+    partial class dbBaglantisi
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.4")
+                .HasAnnotation("ProductVersion", "7.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.HasPostgresExtension(modelBuilder, "uuid-ossp");
@@ -54,7 +54,7 @@ namespace ToDoDataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Category", "Entity");
                 });
 
             modelBuilder.Entity("ToDoEntity.Entity.ToDo", b =>
@@ -95,7 +95,7 @@ namespace ToDoDataAccess.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Todolists");
+                    b.ToTable("ToDo", "Entity");
                 });
 
             modelBuilder.Entity("ToDoEntity.Entity.User", b =>
@@ -131,7 +131,7 @@ namespace ToDoDataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("User", "Entity");
                 });
 
             modelBuilder.Entity("ToDoEntity.Entity.ToDo", b =>

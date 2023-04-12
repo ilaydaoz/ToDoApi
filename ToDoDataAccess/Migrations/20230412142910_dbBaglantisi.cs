@@ -6,16 +6,20 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ToDoDataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class dbBaglantısı : Migration
+    public partial class dbBaglantisi : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.EnsureSchema(
+                name: "Entity");
+
             migrationBuilder.AlterDatabase()
                 .Annotation("Npgsql:PostgresExtension:uuid-ossp", ",,");
 
             migrationBuilder.CreateTable(
-                name: "Categories",
+                name: "Category",
+                schema: "Entity",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false, defaultValueSql: "uuid_generate_v4()"),
@@ -28,11 +32,12 @@ namespace ToDoDataAccess.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Categories", x => x.Id);
+                    table.PrimaryKey("PK_Category", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Users",
+                name: "User",
+                schema: "Entity",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false, defaultValueSql: "uuid_generate_v4()"),
@@ -46,11 +51,12 @@ namespace ToDoDataAccess.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Users", x => x.Id);
+                    table.PrimaryKey("PK_User", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Todolists",
+                name: "ToDo",
+                schema: "Entity",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false, defaultValueSql: "uuid_generate_v4()"),
@@ -65,29 +71,33 @@ namespace ToDoDataAccess.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Todolists", x => x.Id);
+                    table.PrimaryKey("PK_ToDo", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Todolists_Categories_CategoryId",
+                        name: "FK_ToDo_Category_CategoryId",
                         column: x => x.CategoryId,
-                        principalTable: "Categories",
+                        principalSchema: "Entity",
+                        principalTable: "Category",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Todolists_Users_UserId",
+                        name: "FK_ToDo_User_UserId",
                         column: x => x.UserId,
-                        principalTable: "Users",
+                        principalSchema: "Entity",
+                        principalTable: "User",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Todolists_CategoryId",
-                table: "Todolists",
+                name: "IX_ToDo_CategoryId",
+                schema: "Entity",
+                table: "ToDo",
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Todolists_UserId",
-                table: "Todolists",
+                name: "IX_ToDo_UserId",
+                schema: "Entity",
+                table: "ToDo",
                 column: "UserId");
         }
 
@@ -95,13 +105,16 @@ namespace ToDoDataAccess.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Todolists");
+                name: "ToDo",
+                schema: "Entity");
 
             migrationBuilder.DropTable(
-                name: "Categories");
+                name: "Category",
+                schema: "Entity");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "User",
+                schema: "Entity");
         }
     }
 }
