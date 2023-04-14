@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using ToDoBusiness.Services.Commands.Insert.ToDoLists;
+using ToDoBusiness.Services.Queries.GetAll.ToDoLists;
 using ToDoCore.Controller;
 using ToDoListBusiness.Services.Commands.Delete.ToDoLists;
 
@@ -22,6 +23,12 @@ namespace ToDoListApi.Controllers
         {
             var requestModel = new ToDoListDeleteCommandRequestModel { Id = id };
             var response = await _mediator.Send(requestModel);
+            return Ok(response);
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetAllAsync([FromQuery] ToDoGetAllQueryRequestModel request)
+        {
+            var response = await _mediator.Send(request);
             return Ok(response);
         }
     }
