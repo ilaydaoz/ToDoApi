@@ -8,6 +8,6 @@ namespace ToDoEntity.Entity
     {
         public string Name { get; set; }
         public string? Description { get; set; }
-       public ICollection<ToDo>? ToDoItems { get; set; }
+       //public ICollection<ToDo>? ToDoItems { get; set; }
     }
 }

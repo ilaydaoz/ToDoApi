@@ -61,9 +61,6 @@ namespace ToDoDataAccess.Migrations
                         .HasColumnType("uuid")
                         .HasDefaultValueSql("uuid_generate_v4()");
 
-                    b.Property<Guid>("CategoryId")
-                        .HasColumnType("uuid");
-
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("timestamp without time zone");
 
@@ -83,14 +80,7 @@ namespace ToDoDataAccess.Migrations
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uuid");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("ToDo", "Entity");
                 });
@@ -129,35 +119,6 @@ namespace ToDoDataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("User", "Entity");
-                });
-
-            modelBuilder.Entity("ToDoEntity.Entity.ToDo", b =>
-                {
-                    b.HasOne("ToDoEntity.Entity.Category", "Category")
-                        .WithMany("ToDoItems")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ToDoEntity.Entity.User", "User")
-                        .WithMany("ToDoItems")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("ToDoEntity.Entity.Category", b =>
-                {
-                    b.Navigation("ToDoItems");
-                });
-
-            modelBuilder.Entity("ToDoEntity.Entity.User", b =>
-                {
-                    b.Navigation("ToDoItems");
                 });
 #pragma warning restore 612, 618
         }

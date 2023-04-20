@@ -16,7 +16,7 @@ namespace ToDoEntity.Entity
         public string PasswordHash { get; set; }
 
        // [ForeignKey("ToDoItemsId")]
-        public ICollection<ToDo> ToDoItems { get; set; }
+      //  public ICollection<ToDo> ToDoItems { get; set; }
        
     }
 }

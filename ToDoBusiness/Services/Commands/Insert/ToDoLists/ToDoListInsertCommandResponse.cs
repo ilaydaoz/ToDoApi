@@ -12,6 +12,6 @@ namespace ToDoBusiness.Services.Commands.Insert.ToDoLists
         public Guid? UserId { get; set; }
         public string Title { get; set; }
         public string? Description { get; set; }
-        public Guid CategoryId { get; set; }
+        public Guid? CategoryId { get; set; }
     }
 }
