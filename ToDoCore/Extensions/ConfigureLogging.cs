@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace ToDoListCore.Extensions
+namespace ToDoCore.Extensions
 {
     public class ConfigureLogging : ILoggerProvider
     {

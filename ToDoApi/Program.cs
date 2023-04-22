@@ -1,4 +1,5 @@
 using Serilog;
+using ToDoCore.Middlewares;
 using ToDoDataAccess;
 using ToDoListBusiness;
 
@@ -24,7 +25,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDataAccessServices(builder.Configuration);
 builder.Services.AddBusinessServices();
 var app = builder.Build();
-
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.UseCors(options => options.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader()); 
 
 // Configure the HTTP request pipeline.
