@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using ToDoCore.Entites;
 
-namespace ToDoEntity.Entity
+namespace ToDoDataAccess.Entity
 {
     [Table("Category", Schema = "Entity")]
     public class Category : BaseEntity

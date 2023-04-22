@@ -1,6 +1,6 @@
 ﻿using ToDoDataAccess.Context;
+using ToDoDataAccess.Entity;
 using ToDoDataAccess.Repository.Abstract;
-using ToDoEntity.Entity;
 
 namespace ToDoDataAccess.Repository.Concrete
 {

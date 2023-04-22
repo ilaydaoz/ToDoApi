@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using ToDoCore.Entites;
 
-namespace ToDoEntity.Entity
+namespace ToDoDataAccess.Entity
 {
     [Table("ToDo", Schema = "Entity")]
     public class ToDo : BaseEntity

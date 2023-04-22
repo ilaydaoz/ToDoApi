@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ToDoCore.Entites;
 
-namespace ToDoEntity.Entity
+namespace ToDoDataAccess.Entity
 {
     [Table("User", Schema = "Entity")]
     public class User : BaseEntity

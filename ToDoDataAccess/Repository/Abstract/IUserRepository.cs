@@ -1,5 +1,5 @@
 ﻿using ToDoCore.Repository;
-using ToDoEntity.Entity;
+using ToDoDataAccess.Entity;
 
 namespace ToDoDataAccess.Repository.Abstract
 {

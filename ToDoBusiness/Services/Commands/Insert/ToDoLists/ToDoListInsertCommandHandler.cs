@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
+using ToDoDataAccess.Entity;
 using ToDoDataAccess.Repository.Abstract;
-using ToDoEntity.Entity;
 
 namespace ToDoBusiness.Services.Commands.Insert.ToDoLists
 {

@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ToDoEntity.Entity;
-
-namespace ToDoBusiness.Services.Commands.Insert.ToDoLists
+﻿namespace ToDoBusiness.Services.Commands.Insert.ToDoLists
 {
     public class ToDoListInsertCommandResponse
     {
