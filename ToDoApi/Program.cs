@@ -1,7 +1,19 @@
+using Serilog;
 using ToDoDataAccess;
 using ToDoListBusiness;
 
 var builder = WebApplication.CreateBuilder(args);
+var logger = new LoggerConfiguration()
+  .ReadFrom.Configuration(builder.Configuration)
+  .WriteTo.Console()
+  .WriteTo.Debug(Serilog.Events.LogEventLevel.Information)
+  .WriteTo.File("logs/log.txt")
+  .Enrich.FromLogContext()
+
+  .CreateLogger();
+
+builder.Logging.ClearProviders();
+builder.Logging.AddSerilog(logger);
 
 // Add services to the container.
 
