@@ -12,6 +12,5 @@ namespace ToDoCore.Entites
         public DateTime? CreatedDate { get; set; }
         public DateTime? UpdatedDate { get; set; }
         public DateTime DueDate { get; set; }
-        public bool IsCompleted { get; set; }
     }
 }

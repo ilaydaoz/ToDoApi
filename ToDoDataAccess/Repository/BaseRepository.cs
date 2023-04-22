@@ -48,9 +48,9 @@ namespace ToDoDataAccess.Repository
             return entity.Id;
         }
 
-        public ICollection<T> GetByFilter(Expression<Func<T, bool>> filter)
+        public async Task<ICollection<T>> GetByFilterAsync(Expression<Func<T, bool>> filter)
         {
-            return _context.Set<T>().Where(filter).ToList();
+            return await _context.Set<T>().Where(filter).ToListAsync();
         }
     }
 }

@@ -16,6 +16,6 @@ namespace ToDoCore.Repository
         Task<T> InsertAsync(T entity);
         bool Delete(T entity);
         Task<int> SaveAsync();
-        ICollection<T> GetByFilter(Expression<Func<T, bool>> filter);
+        Task<ICollection<T>> GetByFilterAsync(Expression<Func<T, bool>> filter);
     }
 }

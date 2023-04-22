@@ -23,7 +23,7 @@ namespace ToDoDataAccess.Migrations
             NpgsqlModelBuilderExtensions.HasPostgresExtension(modelBuilder, "uuid-ossp");
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("ToDoEntity.Entity.Category", b =>
+            modelBuilder.Entity("ToDoDataAccess.Entity.Category", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -34,13 +34,11 @@ namespace ToDoDataAccess.Migrations
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<DateTime>("DueDate")
                         .HasColumnType("timestamp without time zone");
-
-                    b.Property<bool>("IsCompleted")
-                        .HasColumnType("boolean");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -49,17 +47,23 @@ namespace ToDoDataAccess.Migrations
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("timestamp without time zone");
 
+                    b.Property<int?>("UrgencyLevel")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
                     b.ToTable("Category", "Entity");
                 });
 
-            modelBuilder.Entity("ToDoEntity.Entity.ToDo", b =>
+            modelBuilder.Entity("ToDoDataAccess.Entity.ToDo", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid")
                         .HasDefaultValueSql("uuid_generate_v4()");
+
+                    b.Property<Guid?>("CategoryId")
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("timestamp without time zone");
@@ -70,8 +74,11 @@ namespace ToDoDataAccess.Migrations
                     b.Property<DateTime>("DueDate")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<bool>("IsCompleted")
+                    b.Property<bool?>("IsCompleted")
                         .HasColumnType("boolean");
+
+                    b.Property<Guid?>("Priority")
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -80,12 +87,19 @@ namespace ToDoDataAccess.Migrations
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("timestamp without time zone");
 
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("uuid");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("ToDo", "Entity");
                 });
 
-            modelBuilder.Entity("ToDoEntity.Entity.User", b =>
+            modelBuilder.Entity("ToDoDataAccess.Entity.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -102,9 +116,6 @@ namespace ToDoDataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<bool>("IsCompleted")
-                        .HasColumnType("boolean");
-
                     b.Property<string>("PasswordHash")
                         .IsRequired()
                         .HasColumnType("text");
@@ -119,6 +130,31 @@ namespace ToDoDataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("User", "Entity");
+                });
+
+            modelBuilder.Entity("ToDoDataAccess.Entity.ToDo", b =>
+                {
+                    b.HasOne("ToDoDataAccess.Entity.Category", "Category")
+                        .WithMany("ToDoItems")
+                        .HasForeignKey("CategoryId");
+
+                    b.HasOne("ToDoDataAccess.Entity.User", "User")
+                        .WithMany("ToDoItems")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Category");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ToDoDataAccess.Entity.Category", b =>
+                {
+                    b.Navigation("ToDoItems");
+                });
+
+            modelBuilder.Entity("ToDoDataAccess.Entity.User", b =>
+                {
+                    b.Navigation("ToDoItems");
                 });
 #pragma warning restore 612, 618
         }
