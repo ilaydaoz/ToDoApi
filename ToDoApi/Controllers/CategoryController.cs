@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using ToDoBusiness.Services.Commands.Insert.Categories;
 using ToDoBusiness.Services.Queries.GetByFilter.Categories;
 using ToDoCore.Controller;
 
@@ -10,6 +11,11 @@ namespace ToDoApi.Controllers
         public CategoryController(IMediator mediator, ILogger<BaseController> logger) : base(mediator, logger)
         {
         }
+
+        [HttpPost]
+        public async Task<IActionResult> InsertAsync([FromBody] CategoryInsertCommandRequestModel request) =>
+         Ok(await _mediator.Send(request));
+
         [HttpGet("filter")]
         public async Task<IActionResult> GetByFilterAsync([FromQuery] CategoryGetByFilterQueryRequestModel requestModel)
         {
@@ -21,6 +27,5 @@ namespace ToDoApi.Controllers
             });
             return Ok(response);
         }
-
     }
 }

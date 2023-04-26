@@ -7,7 +7,6 @@ using ToDoListBusiness.Services.Commands.Delete.ToDoLists;
 
 namespace ToDoListApi.Controllers
 {
-
     public class ToDoListController : BaseController
     {
         public ToDoListController(IMediator mediator, ILogger<BaseController> logger) : base(mediator, logger)

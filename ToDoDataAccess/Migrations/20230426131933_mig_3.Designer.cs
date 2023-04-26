@@ -12,8 +12,8 @@ using ToDoDataAccess.Context;
 namespace ToDoDataAccess.Migrations
 {
     [DbContext(typeof(EfContext))]
-    [Migration("20230422181231_mig_2")]
-    partial class mig_2
+    [Migration("20230426131933_mig_3")]
+    partial class mig_3
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,7 +37,6 @@ namespace ToDoDataAccess.Migrations
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<DateTime>("DueDate")
