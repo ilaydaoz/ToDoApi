@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ToDoDataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class mig_3 : Migration
+    public partial class mig_1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -23,9 +23,7 @@ namespace ToDoDataAccess.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false, defaultValueSql: "uuid_generate_v4()"),
-                    Name = table.Column<string>(type: "text", nullable: false),
-                    Description = table.Column<string>(type: "text", nullable: true),
-                    UrgencyLevel = table.Column<int>(type: "integer", nullable: true),
+                    Name = table.Column<string>(type: "text", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
                     UpdatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
                     DueDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
@@ -62,7 +60,7 @@ namespace ToDoDataAccess.Migrations
                     Title = table.Column<string>(type: "text", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: true),
                     IsCompleted = table.Column<bool>(type: "boolean", nullable: true),
-                    Priority = table.Column<Guid>(type: "uuid", nullable: true),
+                    Priority = table.Column<string>(type: "text", nullable: true),
                     UserId = table.Column<Guid>(type: "uuid", nullable: true),
                     CategoryId = table.Column<Guid>(type: "uuid", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),

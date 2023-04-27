@@ -21,10 +21,10 @@ namespace ToDoBusiness.Services.Queries.GetByFilter.Categories
         public async Task<List<CategoryGetByFilterQueryResponse>> Handle(CategoryGetByFilterQueryRequestModel request, CancellationToken cancellationToken)
         {// HasValue : null olup olmadığını kontrol ediyo.
             var categories = await _categoryRepository.GetByFilterAsync(c =>
-            (string.IsNullOrEmpty(request.Name) || c.Name.Contains(request.Name)) &&
-                (string.IsNullOrEmpty(request.Description) || c.Description.Contains(request.Description)) &&
-                (!request.UrgencyLevel.HasValue || c.UrgencyLevel == request.UrgencyLevel));
-            var categoryResponses = _mapper.Map<List<CategoryGetByFilterQueryResponse>>(categories);
+            (string.IsNullOrEmpty(request.Name) || c.Name.Contains(request.Name)));
+               // (string.IsNullOrEmpty(request.Description) || c.Description.Contains(request.Description)) &&
+              //  (!request.UrgencyLevel.HasValue || c.UrgencyLevel == request.UrgencyLevel));
+            var categoryResponses =  _mapper.Map<List<CategoryGetByFilterQueryResponse>>(categories);
             return categoryResponses;
         }
     }

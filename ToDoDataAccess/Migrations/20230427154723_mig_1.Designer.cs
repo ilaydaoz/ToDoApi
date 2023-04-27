@@ -12,8 +12,8 @@ using ToDoDataAccess.Context;
 namespace ToDoDataAccess.Migrations
 {
     [DbContext(typeof(EfContext))]
-    [Migration("20230426131933_mig_3")]
-    partial class mig_3
+    [Migration("20230427154723_mig_1")]
+    partial class mig_1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,21 +36,14 @@ namespace ToDoDataAccess.Migrations
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<string>("Description")
-                        .HasColumnType("text");
-
                     b.Property<DateTime>("DueDate")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("timestamp without time zone");
-
-                    b.Property<int?>("UrgencyLevel")
-                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
@@ -79,8 +72,8 @@ namespace ToDoDataAccess.Migrations
                     b.Property<bool?>("IsCompleted")
                         .HasColumnType("boolean");
 
-                    b.Property<Guid?>("Priority")
-                        .HasColumnType("uuid");
+                    b.Property<string>("Priority")
+                        .HasColumnType("text");
 
                     b.Property<string>("Title")
                         .IsRequired()

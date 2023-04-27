@@ -33,9 +33,6 @@ namespace ToDoDataAccess.Migrations
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<string>("Description")
-                        .HasColumnType("text");
-
                     b.Property<DateTime>("DueDate")
                         .HasColumnType("timestamp without time zone");
 
@@ -44,9 +41,6 @@ namespace ToDoDataAccess.Migrations
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("timestamp without time zone");
-
-                    b.Property<int?>("UrgencyLevel")
-                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
@@ -75,8 +69,8 @@ namespace ToDoDataAccess.Migrations
                     b.Property<bool?>("IsCompleted")
                         .HasColumnType("boolean");
 
-                    b.Property<Guid?>("Priority")
-                        .HasColumnType("uuid");
+                    b.Property<string>("Priority")
+                        .HasColumnType("text");
 
                     b.Property<string>("Title")
                         .IsRequired()

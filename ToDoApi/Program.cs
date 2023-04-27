@@ -1,4 +1,6 @@
+using FluentValidation.AspNetCore;
 using Serilog;
+using ToDoBusiness.Validation;
 using ToDoCore.Middlewares;
 using ToDoDataAccess;
 using ToDoListBusiness;
@@ -18,12 +20,14 @@ builder.Logging.AddSerilog(logger);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+      .AddFluentValidation(configuration => configuration.RegisterValidatorsFromAssemblyContaining<ToDoPriorityValidation>());
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDataAccessServices(builder.Configuration);
 builder.Services.AddBusinessServices();
+
 var app = builder.Build();
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.UseCors(options => options.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader()); 
